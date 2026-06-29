@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trishla Bhandari — Product Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&family=Archivo+Narrow:wght@600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c0c0d;
+    --ink-soft:#16161a;
+    --paper:#f3f1ec;
+    --paper-dim:#cfccc4;
+    --bolt:#ffd400;
+    --line:rgba(243,241,236,.14);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Archivo',system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(12,12,13,.82);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{font-family:'Archivo Narrow','Oswald';font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem}
+  .brand b{color:var(--bolt)}
+  .navlinks{display:flex;gap:26px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--paper-dim)}
+  .navlinks a{text-decoration:none;transition:color .2s}
+  .navlinks a:hover{color:var(--bolt)}
+  @media(max-width:680px){.navlinks{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:url('images/npcc_room.jpg') center/cover;filter:grayscale(.2) brightness(.46)}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,13,.5) 0%,rgba(12,12,13,.2) 40%,rgba(12,12,13,.96) 100%)}
+  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:74px}
+  .eyebrow{font-family:'Archivo Narrow','Oswald';font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:.8rem;color:var(--bolt);margin-bottom:22px}
+  h1.lede{
+    font-family:'Archivo Narrow','Oswald';font-weight:700;
+    font-size:clamp(2.6rem,7vw,5.7rem);line-height:.97;letter-spacing:-.01em;
+    text-transform:uppercase;max-width:14ch;
+  }
+  h1.lede .y{color:var(--bolt)}
+  .scope{
+    margin-top:26px;max-width:54ch;font-size:clamp(1rem,1.5vw,1.22rem);
+    color:var(--paper-dim);font-weight:400;
+  }
+  .who{margin-top:30px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .who .nm{font-family:'Archivo Black';font-size:1.05rem;letter-spacing:.01em}
+  .who .rl{font-size:.9rem;color:var(--paper-dim)}
+  .who .dot{width:5px;height:5px;border-radius:50%;background:var(--bolt)}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:96px 0}
+  .sec-tag{display:flex;align-items:baseline;gap:14px;margin-bottom:30px}
+  .sec-tag .no:empty{display:none}
+  .sec-tag .no{font-family:'Archivo Narrow','Oswald';font-weight:700;color:var(--bolt);font-size:.9rem;letter-spacing:.1em}
+  .sec-tag .tt{font-family:'Archivo Narrow','Oswald';font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.9rem;color:var(--paper-dim)}
+  .sec-tag .rule{flex:1;height:1px;background:var(--line)}
+
+  h2{font-family:'Archivo Narrow','Oswald';font-weight:700;text-transform:uppercase;font-size:clamp(1.9rem,4vw,3.1rem);line-height:1.02;letter-spacing:-.005em;max-width:18ch}
+
+  /* ---------- CASE PHASES ---------- */
+  .phase{margin-top:48px}
+  .phase-lab{display:inline-flex;align-items:center;gap:10px;font-family:'Archivo Narrow','Oswald';font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;color:var(--bolt);margin-bottom:16px}
+  .phase-lab::before{content:"";width:22px;height:2px;background:var(--bolt)}
+  .phase h3{font-family:'Archivo Narrow','Oswald';font-weight:700;text-transform:uppercase;font-size:clamp(1.3rem,2.4vw,1.75rem);line-height:1.05;margin-bottom:14px;max-width:24ch}
+  .phase p{max-width:66ch;color:var(--paper-dim);font-size:1.04rem;margin-bottom:14px}
+  .phase p b{color:var(--paper);font-weight:600}
+
+  /* results list */
+  .res{display:grid;gap:14px;margin-top:8px}
+  .res .item{border:1px solid var(--line);border-left:3px solid var(--bolt);border-radius:3px;padding:22px 24px;background:var(--ink-soft)}
+  .res .item .hd{font-family:'Archivo Narrow','Oswald';font-weight:700;font-size:1.15rem;color:var(--paper);margin-bottom:6px}
+  .res .item .bd{color:var(--paper-dim);font-size:.98rem;max-width:70ch}
+  .res .note{font-size:.85rem;color:var(--paper-dim);opacity:.7;font-style:italic;margin-top:4px}
+
+  /* ---------- CASE: NPCC centerpiece ---------- */
+  .case-lead p.intro{margin-top:22px;max-width:60ch;color:var(--paper-dim);font-size:1.1rem}
+
+  .shift{margin:54px 0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .shift-row{display:grid;grid-template-columns:1fr 1fr}
+  .shift-cell{padding:34px 30px}
+  .shift-cell.before{background:var(--ink-soft)}
+  .shift-cell.after{background:var(--bolt);color:var(--ink)}
+  .shift-cell .lab{font-family:'Archivo Narrow','Oswald';font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;opacity:.7;margin-bottom:14px}
+  .shift-cell .ph{font-family:'Archivo Narrow','Oswald';font-weight:700;font-size:clamp(1.25rem,2.4vw,1.9rem);line-height:1.08}
+  .shift-cell.before .ph{color:var(--paper)}
+  .arrowstrip{background:var(--ink);text-align:center;padding:10px;font-family:'Archivo Narrow','Oswald';font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.72rem;color:var(--bolt);border-top:1px solid var(--line)}
+  @media(max-width:640px){.shift-row{grid-template-columns:1fr}}
+
+  .steps{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:10px}
+  .step{background:var(--ink);padding:28px 26px}
+  .step h4{font-family:'Archivo Narrow','Oswald';font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.95rem;color:var(--bolt);margin-bottom:10px}
+  .step p{font-size:.97rem;color:var(--paper-dim)}
+  @media(max-width:640px){.steps{grid-template-columns:1fr}}
+
+  .gallery{display:grid;gap:18px;margin-top:46px}
+  .g-2{grid-template-columns:1fr 1fr}
+  @media(max-width:720px){.g-2{grid-template-columns:1fr}}
+  figure{margin:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--ink-soft)}
+  figure img{display:block;width:100%;height:auto}
+  figcaption{padding:14px 18px;font-size:.84rem;color:var(--paper-dim);border-top:1px solid var(--line)}
+  figcaption b{color:var(--paper);font-weight:600}
+
+  .result{margin-top:50px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .result .r{background:var(--ink-soft);padding:30px 24px}
+  .result .big{font-family:'Archivo Black';font-size:2.3rem;color:var(--bolt);line-height:1}
+  .result .cap{margin-top:10px;font-size:.9rem;color:var(--paper-dim)}
+  @media(max-width:720px){.result{grid-template-columns:1fr}}
+
+  /* ---------- MESSAGING SECTION ---------- */
+  .msg-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px}
+  @media(max-width:720px){.msg-grid{grid-template-columns:1fr}}
+
+  /* ---------- MAP SLOT ---------- */
+  .mapslot{margin-top:30px;border:1px dashed var(--line);border-radius:4px;padding:60px 30px;text-align:center;color:var(--paper-dim)}
+  .mapslot b{color:var(--bolt);font-family:'Archivo Narrow','Oswald';text-transform:uppercase;letter-spacing:.1em}
+  .map-real{margin-top:30px;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .map-real img{display:block;width:100%;height:auto}
+
+  /* ---------- CONTACT ---------- */
+  .contact{border-top:1px solid var(--line);background:var(--ink-soft)}
+  .contact h2{margin-bottom:26px}
+  .ctas{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:3px;text-decoration:none;font-family:'Archivo Narrow','Oswald';font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;transition:transform .15s,background .2s}
+  .btn.primary{background:var(--bolt);color:var(--ink)}
+  .btn.primary:hover{transform:translateY(-2px)}
+  .btn.ghost{border:1px solid var(--line);color:var(--paper)}
+  .btn.ghost:hover{border-color:var(--bolt);color:var(--bolt)}
+  footer{padding:30px 0;border-top:1px solid var(--line);font-size:.8rem;color:var(--paper-dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  :focus-visible{outline:2px solid var(--bolt);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">Trishla Bhandari <b>/</b> PMM</span>
+    <div class="navlinks">
+      <a href="#case">Flagship</a>
+      <a href="#messaging">Proof points</a>
+      <a href="#reach">Global reach</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="wrap">
+      <div class="eyebrow">Product Marketing · International GTM</div>
+      <h1 class="lede">I help B2B buyers trust technology they're <span class="y">wary of.</span></h1>
+      <p class="scope">Scaling high-stakes technology globally — through localized positioning, international GTM, and sales enablement.</p>
+      <div class="who">
+        <span class="nm">Trishla Bhandari</span>
+        <span class="dot"></span>
+        <span class="rl">Product Marketing · Public safety, AI &amp; emerging markets</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CENTERPIECE CASE ============ -->
+<section id="case" class="case-lead">
+  <div class="wrap">
+    <div class="sec-tag reveal"><span class="tt">Flagship Case Study — TASER 10 + VR at NPCC</span><span class="rule"></span></div>
+    <h2 class="reveal">Turning a hardware story into a platform story officers could trust.</h2>
+
+    <!-- SITUATION & TASK -->
+    <div class="phase reveal">
+      <span class="phase-lab">Situation &amp; Task</span>
+      <h3>Officers saw a gun. The platform behind it was invisible.</h3>
+      <p>Across UK policing, TASER was read as a weapon — a hardware device, and nothing more. The real value sat in the software platform behind it: the data, evidence and audit trail that build accountability. That value wasn't reaching buyers, so the differentiation was being left on the table at exactly the moment forces were weighing a move off legacy systems (TASER 7, X2).</p>
+      <p>My task: reposition TASER 10 from a hardware refresh into a platform-and-accountability case, and give the wider Axon VR training story a single, coherent narrative that buyers and officers could actually trust.</p>
+    </div>
+
+    <!-- ACTION -->
+    <div class="phase reveal">
+      <span class="phase-lab">Action — the strategy</span>
+      <h3>One fused solution story, carried by a framework.</h3>
+      <p>I built a fused <b>TASER 10 + Axon VR solution story</b> and used the <b>Train · Deploy · Analyse</b> framework as its spine — a messaging hierarchy that gave the platform value a language officers understood. I also wrote the foundational sales and messaging assets, including every booth and experience-centre tagline. The whole story went live as a full Axon Experience Centre at the NPCC International TASER Conference, where officers could understand the workflow hands-on, in a realistic environment.</p>
+
+      <!-- signature: the perception shift -->
+      <div class="shift">
+        <div class="shift-row">
+          <div class="shift-cell before">
+            <div class="lab">How officers saw it</div>
+            <div class="ph">A gun. A weapon, and nothing more.</div>
+          </div>
+          <div class="shift-cell after">
+            <div class="lab">How I repositioned it</div>
+            <div class="ph">A platform — where the data drives accountability.</div>
+          </div>
+        </div>
+        <div class="arrowstrip">Train · Deploy · Analyse — the messaging hierarchy that carried it</div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <h4>Train</h4>
+          <p>Axon VR positioned as readiness for the real TASER 10 — building muscle memory and confident handling before the field.</p>
+        </div>
+        <div class="step">
+          <h4>Deploy</h4>
+          <p>The device in context — framed around officer and public safety, not just capability specs.</p>
+        </div>
+        <div class="step">
+          <h4>Analyse</h4>
+          <p>The platform layer — data, evidence and audit reframed as the accountability case that justifies a force-wide transition.</p>
+        </div>
+        <div class="step">
+          <h4>Enablement</h4>
+          <p>An officer-preparedness deck I created for field response, so sales could carry the fused story consistently.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="phase reveal">
+      <span class="phase-lab">Results — the impact</span>
+      <h3>From a training story to a national procurement case.</h3>
+      <div class="res">
+        <div class="item">
+          <div class="hd">Contributed to a £75M–£100M multi-year procurement pipeline</div>
+          <div class="bd">The national transition of all 43 territorial police forces in England &amp; Wales away from legacy systems (TASER 7, X2). The repositioning and Train · Deploy · Analyse framework helped reframe the upgrade from a hardware refresh into a platform-and-accountability case.</div>
+        </div>
+        <div class="item">
+          <div class="hd">97.5% satisfaction at the NPCC International TASER Conference</div>
+          <div class="bd">Messaging from the experience centre adopted for ongoing campaigns.</div>
+        </div>
+        <div class="item">
+          <div class="hd">Adopted by sales as the standard pitch</div>
+          <div class="bd">TASER 10 and VR are now sold as a single solution story, backed by the officer-preparedness deck I created — a durable shift in how the product goes to market.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTIFACTS -->
+    <div class="phase reveal">
+      <span class="phase-lab">Artifacts — the proof</span>
+      <h3>The work, in the wild.</h3>
+    </div>
+
+    <div class="gallery">
+      <figure class="reveal">
+        <img src="images/npcc_room.jpg" alt="Axon Experience Centre at the NPCC TASER Conference">
+        <figcaption><b>NPCC Experience Centre.</b> The environment built around the solution story — every booth tagline ("Return an item? Ask us how", "Learn about the TASER 10 build quality", "Talk TASER to me") written by me.</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="images/npcc_entrance.jpg" alt="Axon Experience Centre entrance with Train Deploy Analyse messaging">
+        <figcaption><b>Train · Deploy · Analyse, deployed.</b> The entrance messaging I wrote — train in VR, deploy at the range, review every detail to promote accountability.</figcaption>
+      </figure>
+    </div>
+
+    <div class="gallery g-2">
+      <figure class="reveal">
+        <img src="images/vr_hero.jpg" alt="Axon VR — train anytime, anywhere">
+        <figcaption><b>Axon VR positioning.</b> Messaging I led — framing VR as readiness for the real TASER 10, not a gadget.</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="images/vr_familiarity.jpg" alt="Axon VR familiarity reinforces confident handling">
+        <figcaption><b>Familiarity → confidence.</b> Connecting the training tool directly to field confidence with the same device.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MESSAGING ============ -->
+<section id="messaging">
+  <div class="wrap">
+    <div class="sec-tag reveal"><span class="tt">More proof points &amp; assets I built</span><span class="rule"></span></div>
+    <h2 class="reveal">Making the complex make sense — on the page, for every stakeholder.</h2>
+    <p class="intro reveal" style="margin-top:22px;max-width:60ch;color:var(--paper-dim);font-size:1.1rem">I led the messaging and copy for the TASER 10 product story — turning a dense feature set into benefits a buyer grasps in seconds, and translating the platform value into language that holds up with skeptical, high-stakes audiences.</p>
+    <div class="msg-grid">
+      <figure class="reveal">
+        <img src="images/t10_benefits.jpg" alt="TASER 10 benefits — build trust, elevate training, increase efficiency">
+        <figcaption><b>Benefit framing.</b> Build trust · Elevate training · Increase efficiency — the buyer-facing case, not a spec sheet.</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="images/t10_features.jpg" alt="TASER 10 feature messaging grid">
+        <figcaption><b>Feature-to-meaning.</b> Twelve capabilities translated into clear, scannable value for mixed audiences.</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="images/vr_microtraining.jpg" alt="Axon VR micro-training messaging">
+        <figcaption><b>Axon VR — micro-training.</b> Positioning short, repeatable sessions as the path to retained skill.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GLOBAL REACH ============ -->
+<section id="reach">
+  <div class="wrap">
+    <div class="sec-tag reveal"><span class="tt">Global reach &amp; brand credibility</span><span class="rule"></span></div>
+    <h2 class="reveal">Positioning built to travel across 80+ markets.</h2>
+    <p class="intro reveal" style="margin-top:22px;max-width:58ch;color:var(--paper-dim);font-size:1.1rem">I created the global TASER credibility asset below — the kind of proof point that opens doors in international GTM by establishing scale and trust before the conversation even starts.</p>
+
+    <!-- global_map.jpg is present; JS swaps this for the real image on load -->
+    <div class="mapslot reveal" id="mapslot">
+      <p><b>Global reach</b></p>
+      <p style="margin-top:10px;max-width:46ch;margin-inline:auto">TASER energy devices — trusted across 80+ countries and territories.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-tag reveal"><span class="tt">Contact</span><span class="rule"></span></div>
+    <h2 class="reveal">Let's talk about hard-to-sell technology.</h2>
+    <div class="ctas reveal" style="margin-top:8px">
+      <a class="btn primary" href="mailto:b.trishla@gmail.com">Email me</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/trishlabhandari1507" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <footer>
+      <span>© 2026 Trishla Bhandari</span>
+      <span>Product Marketing · International GTM · Public safety &amp; AI</span>
+    </footer>
+  </div>
+</section>
+
+<script>
+  // Scroll reveal
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // If a global_map.jpg is present, swap the placeholder for the real image
+  (function(){
+    const img=new Image();
+    img.onload=function(){
+      const slot=document.getElementById('mapslot');
+      if(slot){slot.outerHTML='<div class="map-real"><img src="images/global_map.jpg" alt="TASER deployed in 80+ countries — global credibility asset created by Trishla Bhandari"></div>';}
+    };
+    img.src='images/global_map.jpg';
+  })();
+</script>
+</body>
+</html>
