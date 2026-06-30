@@ -346,14 +346,7 @@
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
   // If a global_map.jpg is present, swap the placeholder for the real image
-  (function(){
-    const img=new Image();
-    img.onload=function(){
-      const slot=document.getElementById('mapslot');
-      if(slot){slot.outerHTML='<div class="map-real"><img src="global_map.jpg" alt="TASER deployed in 80+ countries — global credibility asset created by Trishla Bhandari"></div>';}
-    };
-    img.src='global_map.jpg';
-  })();
+  ();
 </script>
 </body>
 </html>
